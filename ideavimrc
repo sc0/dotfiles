@@ -1,0 +1,7 @@
+imap jk <ESC>
+set surround
+set multiple-cursors
+set ideamarks
+set ignorecase
+set easymotion
+set commentary
