@@ -1,1 +1,0 @@
-command ln ln -s %f:p %D
