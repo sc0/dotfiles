@@ -136,3 +136,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
