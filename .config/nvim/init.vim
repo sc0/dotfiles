@@ -1,6 +1,11 @@
-" Basic
 filetype plugin indent on
 syntax on 
+
+if has("syntax")
+  syntax on
+  filetype on
+endif
+
 
 set number
 set shiftwidth=2
@@ -10,7 +15,7 @@ set expandtab
 set hidden
 set autoindent
 set backspace=indent,eol,start
-set foldmethod=syntax
+" set foldmethod=syntax
 set nomodeline
 
 " Coc.nvim required changes
@@ -53,13 +58,13 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> \d :CocDiagnostics<CR><c-w>k
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -133,11 +138,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 call plug#begin('~/.nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-syntastic/syntastic'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -148,13 +152,17 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'rust-lang/rust.vim'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 " Autocommands
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * ++nested colorscheme gruvbox
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd BufRead * normal zR
+ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+ autocmd VimEnter * ++nested colorscheme gruvbox
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+ autocmd BufRead * normal zR
 
 " Plugin configuration
 let g:NERDTreeIndicatorMapCustom = {
@@ -175,17 +183,13 @@ let g:NERDTreeDirArrowCollapsible="-"
 let g:rainbow_active = 1
 
 " Keymaps 
-nnoremap <C-]> <C-o>
-
 if !exists('veonim')
   map <leader>n :NERDTreeToggle<CR>
-  map <C-o> :Files<CR>
-  map <C-t> :Buffers<CR>
-  map <C-m> :Marks<CR>
 endif
 cnoreabbrev W w
 cnoreabbrev Wq wq
 imap jk <ESC>
+
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -211,3 +215,9 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 nmap <C-b> gd
+
+nmap <C-o> <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd> Telescope live_grep<cr>
+nnoremap <C-t> <cmd> Telescope buffers<cr>
+
+inoremap <silent> <C-P> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
