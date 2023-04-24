@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/kacperdebowski/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,8 +70,9 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+source ~/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 plugins=(
-  zsh-syntax-highlighting
   git
   tmux
   macos
@@ -116,31 +117,22 @@ bindkey '^[[[CA' autosuggest-accept
 alias venv="source ./.venv/bin/activate"
 alias vim="nvim"
 
-alias x64="env /usr/bin/arch -x86_64 /bin/zsh --login"
 alias zshrc="nvim ~/.zshrc"
 alias srczsh="source ~/.zshrc"
 alias vimrc="nvim ~/.config/nvim/init.vim"
-alias kahup="cd ~/code/kaholo/kaholo-enterprise/docker-development && npm run up && cd -"
-alias kahbuild="cd ~/code/kaholo/kaholo-enterprise/docker-development && npm run up-build && cd -"
-alias kahfull="cd ~/code/kaholo/kaholo-enterprise/docker-development && npm run up-full-rebuild && cd -"
-alias kahpre="cd ~/code/kaholo/kaholo-enterprise/bigbird/server && npm run pretest && cd -"
-alias kahpost="cd ~/code/kaholo/kaholo-enterprise/bigbird/server && npm run posttest && cd -"
 
-alias kahngre="docker container restart kaholo-enterprise_console_1 -t0"
-alias kahnglog="docker logs kaholo-enterprise_console_1 -f"
-alias kahngsh="docker exec -it kaholo-enterprise_console_1 bash"
+# MacOS only stuff
+# alias x64="env /usr/bin/arch -x86_64 /bin/zsh --login"
+# alias webstorm="open -na \"WebStorm.app\" --args \"$@\""
 
-alias webstorm="open -na \"WebStorm.app\" --args \"$@\""
+# export PATH="/opt/homebrew/bin:$PATH"
 
-export PATH="/opt/homebrew/bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-
+# export HOMEBREW_NO_AUTO_UPDATE=1
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
