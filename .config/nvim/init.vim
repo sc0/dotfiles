@@ -15,7 +15,6 @@ set expandtab
 set hidden
 set autoindent
 set backspace=indent,eol,start
-" set foldmethod=syntax
 set nomodeline
 
 " Coc.nvim required changes
@@ -105,9 +104,6 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -139,7 +135,7 @@ call plug#begin('~/.nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 Plug 'frazrepo/vim-rainbow'
@@ -156,6 +152,8 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'kalekundert/vim-coiled-snake'
+Plug 'Konfekt/FastFold'
 call plug#end()
 
 " Autocommands
@@ -221,3 +219,7 @@ nnoremap <leader>f <cmd> Telescope live_grep<cr>
 nnoremap <C-t> <cmd> Telescope buffers<cr>
 
 inoremap <silent> <C-P> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
+
+nnoremap <leader>v ggVG
+nnoremap <leader>y "+y
+nnoremap <leader>Y ggVG"+y
