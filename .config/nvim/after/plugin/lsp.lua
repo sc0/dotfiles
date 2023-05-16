@@ -74,15 +74,3 @@ require("lspconfig").lua_ls.setup({
 })
 
 lsp.setup()
-
-vim.api.nvim_set_option("updatetime", 300)
-
-vim.diagnostic.config({
-	virtual_text = false,
-	float = {
-		show_header = true,
-		focusable = false,
-		source = "always",
-		scope = "line",
-	},
-})

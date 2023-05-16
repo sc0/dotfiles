@@ -2,7 +2,7 @@ require("kdb")
 require("kdb.remap")
 require("kdb.plugins")
 
-vim.api.nvim_set_option("updatetime", 300)
+vim.api.nvim_set_option("updatetime", 1000)
 
 vim.diagnostic.config({
 	virtual_text = true,
@@ -45,3 +45,4 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 })
 
 vim.api.nvim_command("hi Folded guifg=#5c5c5c")
+vim.api.nvim_command("hi Folded guibg=None")
