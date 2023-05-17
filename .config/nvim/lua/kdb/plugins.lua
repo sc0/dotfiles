@@ -52,12 +52,11 @@ require("lazy").setup({
 	{ "airblade/vim-gitgutter" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-commentary" },
-	{ "tpope/vim-unimpaired" },
-	{ "kalekundert/vim-coiled-snake" },
 	{ "Konfekt/FastFold" },
 	{ "nvim-lualine/lualine.nvim" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 	{ "anuvyklack/pretty-fold.nvim" },
-  { "folke/trouble.nvim" }
+  { "folke/trouble.nvim" },
+  { "windwp/nvim-autopairs" }
 })

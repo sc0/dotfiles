@@ -31,4 +31,6 @@ vim.opt.hidden = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
