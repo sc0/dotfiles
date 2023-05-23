@@ -58,5 +58,7 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 	{ "anuvyklack/pretty-fold.nvim" },
   { "folke/trouble.nvim" },
-  { "windwp/nvim-autopairs" }
+  { "windwp/nvim-autopairs" },
+  { "ahmedkhalf/project.nvim" },
+  { "sindrets/diffview.nvim"}
 })

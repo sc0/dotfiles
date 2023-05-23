@@ -47,9 +47,4 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 vim.api.nvim_command("hi Folded guifg=#5c5c5c")
 vim.api.nvim_command("hi Folded guibg=None")
 
--- call `normal zx` to recalculate folds (a walkaround the treesitter + telescope folding issue
--- disable folds on buffer enter
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = { "*" },
-    callback = function() vim.cmd [[normal zx]]; vim.opt.foldenable = false end
-})
+vim.opt.foldenable = false

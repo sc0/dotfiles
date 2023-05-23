@@ -34,3 +34,6 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.textwidth = 80
+vim.opt.colorcolumn = '+' .. vim.fn.join(vim.fn.range(1, 254), ',+')
+
