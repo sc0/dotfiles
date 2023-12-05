@@ -20,9 +20,14 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
-	{ "nvim-treesitter/nvim-treesitter" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
+	{ "nvim-treesitter/playground" },
 	{ "mbbill/undotree" },
-	{ "tpope/vim-fugitive" },
 
 	-- lsp zero setup
 	{
@@ -46,7 +51,7 @@ require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	},
-	{ "nvim-tree/nvim-tree.lua" },
+	-- { "nvim-tree/nvim-tree.lua" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "mattn/emmet-vim" },
 	{ "airblade/vim-gitgutter" },
@@ -57,8 +62,22 @@ require("lazy").setup({
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 	{ "anuvyklack/pretty-fold.nvim" },
-  { "folke/trouble.nvim" },
-  { "windwp/nvim-autopairs" },
-  { "ahmedkhalf/project.nvim" },
-  { "sindrets/diffview.nvim"}
+	{ "folke/trouble.nvim" },
+	{ "windwp/nvim-autopairs" },
+	{ "ahmedkhalf/project.nvim" },
+	{ "sindrets/diffview.nvim" },
+	{ "chentoast/marks.nvim" },
+	{ "monkoose/matchparen.nvim" },
+	{ "stevearc/oil.nvim" },
+	{ "lukas-reineke/indent-blankline.nvim" },
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+	},
+	{ "lifepillar/pgsql.vim" },
+	{ "tmux-plugins/vim-tmux-focus-events" },
+	{ "tpope/vim-repeat" },
+	{ "ggandor/leap.nvim" },
+	{ "ThePrimeagen/harpoon" },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 })

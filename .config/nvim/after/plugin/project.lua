@@ -1,4 +1,4 @@
 require("project_nvim").setup({
-	-- detection_methods = { "pattern", "lsp" },
+	detection_methods = { "lsp", "pattern" },
 	silent_chdir = true,
 })

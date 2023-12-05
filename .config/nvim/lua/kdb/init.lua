@@ -2,7 +2,8 @@ vim.keymap.set("i", "jk", "<ESC>")
 
 vim.opt.guicursor = ""
 --
-vim.opt.nu = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -21,19 +22,18 @@ vim.opt.undofile = true
 
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "number"
+vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.hidden = true
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.textwidth = 80
-vim.opt.colorcolumn = '+' .. vim.fn.join(vim.fn.range(1, 254), ',+')
-
+vim.opt.colorcolumn = "+" .. vim.fn.join(vim.fn.range(1, 2), ",+")

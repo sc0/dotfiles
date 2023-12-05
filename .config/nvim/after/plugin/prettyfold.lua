@@ -40,4 +40,4 @@ local config = {
    ft_ignore = { 'neorg' },
 }
 
-require('pretty-fold').setup(config)
+-- require('pretty-fold').setup(config)

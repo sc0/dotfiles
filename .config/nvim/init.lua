@@ -44,7 +44,20 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	group = "lsp_diagnostics_hold",
 })
 
-vim.api.nvim_command("hi Folded guifg=#5c5c5c")
-vim.api.nvim_command("hi Folded guibg=None")
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+	pattern = "*",
+	command = "setlocal cursorline",
+})
 
-vim.opt.foldenable = false
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+	pattern = "*",
+	command = "setlocal cursorline",
+})
+
+-- vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
+-- 	pattern = "*",
+-- 	nested = true,
+-- 	command = "silent! :w",
+-- })
+
+vim.filetype.add({ extension = { sql = "pgsql" } })
