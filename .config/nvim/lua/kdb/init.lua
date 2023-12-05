@@ -22,7 +22,7 @@ vim.opt.undofile = true
 
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -37,3 +37,4 @@ vim.opt.smartcase = true
 
 vim.opt.textwidth = 80
 vim.opt.colorcolumn = "+" .. vim.fn.join(vim.fn.range(1, 2), ",+")
+

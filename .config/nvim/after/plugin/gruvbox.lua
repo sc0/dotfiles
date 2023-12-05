@@ -3,7 +3,7 @@ vim.o.background = "dark"
 -- setup must be called before loading the colorscheme
 -- Default options:
 require("gruvbox").setup({
-  terminal_colors = false,
+	terminal_colors = false,
 	undercurl = true,
 	underline = true,
 	bold = true,

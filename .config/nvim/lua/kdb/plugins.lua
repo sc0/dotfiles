@@ -51,10 +51,8 @@ require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	},
-	-- { "nvim-tree/nvim-tree.lua" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "mattn/emmet-vim" },
-	{ "airblade/vim-gitgutter" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-commentary" },
 	{ "Konfekt/FastFold" },
@@ -80,4 +78,5 @@ require("lazy").setup({
 	{ "ggandor/leap.nvim" },
 	{ "ThePrimeagen/harpoon" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+  { "tanvirtin/vgit.nvim"}
 })
