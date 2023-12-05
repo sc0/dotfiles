@@ -59,16 +59,20 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- replace selected word with typed text
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI|''<Left><Left><Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set("n", "<leader>vt", "<cmd>lua vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })<CR>")
-vim.keymap.set("n", "<leader>i", "ea<cmd>lua (function() require'cmp'.complete(); require'cmp'.select_next_item(); end)()<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>vt",
+	"<cmd>lua vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })<CR>"
+)
+vim.keymap.set(
+	"n",
+	"<leader>i",
+	"ea<cmd>lua (function() require'cmp'.complete(); require'cmp'.select_next_item(); end)()<CR>"
+)
 vim.keymap.set("n", "<leader>n", "<cmd>nohl<cr>")
 
 vim.keymap.set("n", "<C-i>", "<C-a>")
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-
-
 -- harpoon
 vim.keymap.set("n", "<leader>p", "<cmd>Telescope harpoon marks<CR>")
 vim.keymap.set("n", "<leader>l", "<cmd>lua require'harpoon.mark'.add_file()<CR>")
-
