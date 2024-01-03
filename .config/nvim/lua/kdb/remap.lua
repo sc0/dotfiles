@@ -76,3 +76,6 @@ vim.keymap.set("n", "<C-i>", "<C-a>")
 -- harpoon
 vim.keymap.set("n", "<leader>p", "<cmd>Telescope harpoon marks<CR>")
 vim.keymap.set("n", "<leader>l", "<cmd>lua require'harpoon.mark'.add_file()<CR>")
+
+-- Exit terminal insert mode with ESC
+vim.keymap.set("t", "<leader><ESC>", [[<C-\><C-n>]])

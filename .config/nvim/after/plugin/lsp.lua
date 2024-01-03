@@ -6,9 +6,9 @@ lsp.ensure_installed({
 	"rust_analyzer",
 })
 
--- require("lspconfig").html.setup({
---   filetypes={"html", "htmldjango"}
--- })
+require("lspconfig").html.setup({
+	filetypes = { "html", "htmldjango" },
+})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -74,11 +74,11 @@ require("lspconfig").lua_ls.setup({
 })
 
 require("lspconfig").astro.setup({
-  init_options = {
-    typescript = {
-      tsdk = os.getenv("HOME") .. "/node_modules/typescript/lib"
-    }
-  }
+	init_options = {
+		typescript = {
+			tsdk = os.getenv("HOME") .. "/node_modules/typescript/lib",
+		},
+	},
 })
 
 lsp.setup()

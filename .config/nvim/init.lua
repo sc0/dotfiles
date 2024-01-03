@@ -6,7 +6,6 @@ vim.api.nvim_set_option("updatetime", 1000)
 
 vim.diagnostic.config({
 	virtual_text = true,
-
 	float = {
 		show_header = true,
 		focusable = false,
@@ -62,4 +61,3 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 -- })
 
 vim.filetype.add({ extension = { sql = "pgsql" } })
-vim.cmd([[highlight SignColumn guibg=none]])

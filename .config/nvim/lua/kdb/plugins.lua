@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
@@ -78,5 +77,17 @@ require("lazy").setup({
 	{ "ggandor/leap.nvim" },
 	{ "ThePrimeagen/harpoon" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-  { "tanvirtin/vgit.nvim"}
+	{ "tanvirtin/vgit.nvim" },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
 })
