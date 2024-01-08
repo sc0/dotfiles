@@ -58,6 +58,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- replace selected word with typed text
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI|''<Left><Left><Left><Left><Left><Left>]])
+vim.keymap.set("v", "<leader>s", [[y:%s/<C-r>"/<C-r>"/gI|''<Left><Left><Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set(
 	"n",
