@@ -75,7 +75,7 @@ require("lazy").setup({
 	{ "tmux-plugins/vim-tmux-focus-events" },
 	{ "tpope/vim-repeat" },
 	{ "ggandor/leap.nvim" },
-	{ "ThePrimeagen/harpoon" },
+	{ "ThePrimeagen/harpoon", branch = "harpoon2" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "tanvirtin/vgit.nvim" },
 	{

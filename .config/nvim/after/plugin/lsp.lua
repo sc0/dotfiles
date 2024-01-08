@@ -81,4 +81,8 @@ require("lspconfig").astro.setup({
 	},
 })
 
+require("lspconfig").htmx.setup({
+	filetypes = { "html", "htmldjango" },
+})
+
 lsp.setup()

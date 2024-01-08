@@ -15,7 +15,6 @@ vim.keymap.set("n", "<leader>r", builtin.lsp_references, {})
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, {})
 
 require("telescope").load_extension("projects")
-require("telescope").load_extension("harpoon")
 require("telescope").setup({
 	defaults = {
 		mappings = {

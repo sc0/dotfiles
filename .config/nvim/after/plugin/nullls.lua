@@ -28,11 +28,10 @@ null_ls.setup({
 
 		-- jinja
 		null_ls.builtins.diagnostics.djlint,
-		null_ls.builtins.formatting.djhtml,
 
 		-- prettier
-		null_ls.builtins.formatting.prettierd.with({
-			extra_filetypes = { "astro", "html" },
+		null_ls.builtins.formatting.prettier.with({
+			extra_filetypes = { "astro", "html", "htmldjango" },
 		}),
 
 		-- css
