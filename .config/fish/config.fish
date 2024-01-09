@@ -1,7 +1,7 @@
 if status is-interactive
   # Variables
   set EDITOR nvim
-  set SHELL /opt/homebrew/bin/fish
+  set SHELL $(which fish)
   set HOMEBREW_NO_AUTO_UPDATE 1 # Prevents every `brew install` from taking forever
   set TERM xterm-256color-italic
 
@@ -31,6 +31,7 @@ if status is-interactive
   alias src="source ~/.config/fish/config.fish"
   alias tmuxconf="vim ~/.tmux.conf"
   alias t="tmux attach || tmux"
+  alias ssh="TERM=xterm-256color ssh"
 
   # Functions
   function nvm
