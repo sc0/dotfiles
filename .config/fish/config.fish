@@ -4,6 +4,11 @@ if status is-interactive
   set SHELL $(which fish)
   set HOMEBREW_NO_AUTO_UPDATE 1 # Prevents every `brew install` from taking forever
   set TERM xterm-256color-italic
+  set BAT_THEME base16-256
+
+  # Fish fzf setup
+  fzf_configure_bindings --directory=\co --git_status=\cg
+  set fzf_fd_opts --hidden --max-depth 7
 
   # Commands to run in interactive sessions can go here
   pyenv init - | source
@@ -16,10 +21,6 @@ if status is-interactive
   bind \ca backward-word
   bind \cf accept-autosuggestion
   bind \ce edit_command_buffer
-
-  bind \cj "commandline -i ' | fzf --ansi'"
-  bind \x1c "commandline -i '(find * -type d | fzf --ansi)'"
-  bind \c] "commandline -i '(find * -type f | fzf --ansi)'"
 
   # Aliases
   alias vim="nvim"
