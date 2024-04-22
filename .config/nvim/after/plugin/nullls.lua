@@ -14,10 +14,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.gofumpt,
 
 		-- sql
-		null_ls.builtins.diagnostics.sqlfluff.with({
-			extra_args = { "--dialect", "postgres" },
-			extra_filetypes = { "pgsql" },
-		}),
+    null_ls.builtins.diagnostics.sqlfluff.with({
+      extra_args = { "--dialect", "postgres" },
+      extra_filetypes = { "pgsql" },
+    }),
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
 			extra_filetypes = { "pgsql" },
@@ -31,7 +31,7 @@ null_ls.setup({
 
 		-- prettier
 		null_ls.builtins.formatting.prettier.with({
-			extra_filetypes = { "astro", "html", "htmldjango" },
+			extra_filetypes = { "astro", "html", "htmldjango", "svelte", "jinja.html" },
 		}),
 
 		-- css
@@ -42,3 +42,4 @@ null_ls.setup({
 		null_ls.builtins.code_actions.refactoring,
 	},
 })
+

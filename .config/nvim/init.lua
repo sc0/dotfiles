@@ -59,5 +59,7 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 -- 	nested = true,
 -- 	command = "silent! :w",
 -- })
+--
 
 vim.filetype.add({ extension = { sql = "pgsql" } })
+vim.o.conceallevel = 2

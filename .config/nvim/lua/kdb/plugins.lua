@@ -25,7 +25,6 @@ require("lazy").setup({
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 	},
-	{ "nvim-treesitter/playground" },
 	{ "mbbill/undotree" },
 
 	-- lsp zero setup
@@ -74,7 +73,21 @@ require("lazy").setup({
 	{ "lifepillar/pgsql.vim" },
 	{ "tmux-plugins/vim-tmux-focus-events" },
 	{ "tpope/vim-repeat" },
-	{ "ggandor/leap.nvim" },
+	{
+		"folke/flash.nvim",
+		opts = {
+			modes = {
+				char = {
+					jump_labels = true,
+				},
+			},
+			label = {
+				rainbow = {
+					enabled = true,
+				},
+			},
+		},
+	},
 	{ "ThePrimeagen/harpoon", branch = "harpoon2" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "tanvirtin/vgit.nvim" },
@@ -90,4 +103,74 @@ require("lazy").setup({
 			-- configurations go here
 		},
 	},
+	{ "sc0/telescope-cmdline.nvim", branch = "fuzzy-search" },
+	{ "mfussenegger/nvim-dap" },
+	{ "mfussenegger/nvim-dap-python" },
+	{ "fatih/vim-go" },
+	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "glench/vim-jinja2-syntax" },
+	{ "Exafunction/codeium.vim" },
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup({
+				edit_with_instructions = {
+					keymaps = {
+						toggle_help = "<C-j>",
+						use_output_as_input = "<C-f>",
+					},
+				},
+				chat = {
+					keymaps = {
+						toggle_help = "<C-j>",
+					},
+				},
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"folke/trouble.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
+	{ "imsnif/kdl.vim" },
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+	{
+		"nvim-neorg/neorg",
+		dependencies = { "luarocks.nvim" },
+		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		version = "*", -- Pin Neorg to the latest stable release
+		config = function()
+			vim.g.maplocalleader = ","
+			require("neorg").setup({
+				load = {
+					["core.keybinds"] = {
+						config = {
+							hook = function(keybinds)
+								keybinds.remap_key("norg", "n", "<C-Space>", "<Space><Space>")
+							end,
+						},
+					},
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								notes = "~/notes",
+							},
+							default_workspace = "notes",
+						},
+					},
+				},
+			})
+		end,
+	},
+	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 })

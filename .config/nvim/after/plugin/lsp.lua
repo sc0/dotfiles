@@ -10,6 +10,12 @@ require("lspconfig").html.setup({
 	filetypes = { "html", "htmldjango" },
 })
 
+vim.keymap.set("n", "<C-f>", function()
+  local view = vim.fn.winsaveview()
+	vim.cmd("normal! gg=G")
+  vim.fn.winrestview(view)
+end)
+
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 

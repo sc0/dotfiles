@@ -8,11 +8,12 @@ end)
 vim.keymap.set("n", "<leader>je", builtin.jumplist, {})
 vim.keymap.set("n", "<leader>a", builtin.lsp_document_symbols, {})
 vim.keymap.set("n", "<leader>wa", builtin.lsp_dynamic_workspace_symbols, {})
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "<leader>ff", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set("n", "<leader>r", builtin.lsp_references, {})
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, {})
+vim.keymap.set("n", "<leader>fp", "<cmd>Telescope cmdline<cr>", {})
 
 require("telescope").load_extension("projects")
 require("telescope").setup({
@@ -28,4 +29,23 @@ require("telescope").setup({
 			},
 		},
 	},
+	extensions = {
+		cmdline = {
+			picker = {
+				layout_config = {
+					width = 0.8,
+					height = 0.9,
+					prompt_position = "bottom",
+					preview_cutoff = 40,
+				},
+			},
+			mappings = {
+				complete = "<Tab>",
+				run_selection = "<CR>",
+				run_input = "<S-CR>",
+			},
+		},
+	},
 })
+
+require("telescope").load_extension("cmdline")

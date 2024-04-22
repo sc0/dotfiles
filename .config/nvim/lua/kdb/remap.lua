@@ -78,3 +78,10 @@ vim.keymap.set("n", "<C-i>", "<C-a>")
 
 -- Exit terminal insert mode with ESC
 vim.keymap.set("t", "<leader><ESC>", [[<C-\><C-n>]])
+
+-- ChatGPT plugin keymaps
+vim.keymap.set("n", "<leader>gt", "<cmd>ChatGPT<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>gi", "<cmd>ChatGPTEditWithInstruction<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>gf", "<cmd>ChatGPTRun fix_bugs<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>ge", "<cmd>ChatGPTRun explain_code<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>go", "<cmd>ChatGPTRun optimize_code<CR>")
