@@ -104,13 +104,18 @@ require("lazy").setup({
 		},
 	},
 	{ "sc0/telescope-cmdline.nvim", branch = "fuzzy-search" },
-	{ "mfussenegger/nvim-dap" },
-	{ "mfussenegger/nvim-dap-python" },
+	-- { "mfussenegger/nvim-dap" },
+	-- { "mfussenegger/nvim-dap-python" },
 	{ "fatih/vim-go" },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "glench/vim-jinja2-syntax" },
-	{ "Exafunction/codeium.vim" },
+	{
+		"Exafunction/codeium.nvim",
+    config = function()
+      require("codeium").setup({})
+    end
+	},
 	{
 		"jackMort/ChatGPT.nvim",
 		event = "VeryLazy",
@@ -163,9 +168,11 @@ require("lazy").setup({
 					["core.dirman"] = {
 						config = {
 							workspaces = {
-								notes = "~/notes",
+								worknotes = "~/worknotes",
+								personal = "~/personal",
+                side_projects = "~/side_projects"
 							},
-							default_workspace = "notes",
+							default_workspace = "worknotes",
 						},
 					},
 				},
@@ -173,4 +180,5 @@ require("lazy").setup({
 		end,
 	},
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
+	{ "LhKipp/nvim-nu", build = "TSInstall nu" },
 })

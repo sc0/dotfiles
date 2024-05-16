@@ -1,6 +1,4 @@
-layout {
-  default_tab_template {
-    children
+  pane_template name="statusbar"{
     pane size=1 borderless=true {
       plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
         format_left  "{mode}#[fg=#232137,bg=black] #[fg=fg,bg=black,bold]{session} #[fg=black,bg=orange]{tabs}"
@@ -10,7 +8,7 @@ layout {
         hide_frame_for_single_pane "true"
 
         mode_normal        "#[fg=fg,bg=black,bold] {name} #[fg=black,bg=orange]"
-        mode_locked        "#[fg=fg,bg=#232138,bold] {name} #[fg=#232137,bg=orange]"
+        mode_locked        "#[fg=fg,bg=#232137,bold] {name} #[fg=#232137,bg=orange]"
         mode_resize        "#[fg=fg,bg=#6e6a86,bold] {name} #[fg=#6e6a86,bg=orange]"
         mode_pane          "#[fg=fg,bg=#31748f,bold] {name} #[fg=#31748f,bg=orange]"
         mode_tab           "#[fg=black,bg=#f6c177,bold] {name} #[fg=#f6c177,bg=orange]"
@@ -37,4 +35,3 @@ layout {
       }
     }
   }
-}

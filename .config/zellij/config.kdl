@@ -173,6 +173,7 @@ keybinds clear-defaults=true {
     bind "Alt k"  { MoveFocus "Up"; }
     bind "Alt =" "Alt +" { Resize "Increase"; }
     bind "Alt -" { Resize "Decrease"; }
+
     bind "Alt [" { PreviousSwapLayout; }
     bind "Alt ]" { NextSwapLayout; }
 
@@ -238,7 +239,6 @@ plugins {
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-default_shell "fish"
 
 // Choose the path to override cwd that zellij will use for opening new panes
 //
