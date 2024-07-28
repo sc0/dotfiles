@@ -65,7 +65,7 @@ lsp.setup_nvim_cmp({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
-		{ name = "codeium" },
+		-- { name = "codeium" },
 	},
 	{ { name = "buffer" } },
 	capabilities = capabilities,

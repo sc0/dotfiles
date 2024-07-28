@@ -111,12 +111,6 @@ require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "glench/vim-jinja2-syntax" },
 	{
-		"Exafunction/codeium.nvim",
-    config = function()
-      require("codeium").setup({})
-    end
-	},
-	{
 		"jackMort/ChatGPT.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -151,7 +145,7 @@ require("lazy").setup({
 		"nvim-neorg/neorg",
 		dependencies = { "luarocks.nvim" },
 		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-		version = "*", -- Pin Neorg to the latest stable release
+		version = "8.7.1", -- Pin Neorg to the latest stable release
 		config = function()
 			vim.g.maplocalleader = ","
 			require("neorg").setup({
@@ -170,7 +164,7 @@ require("lazy").setup({
 							workspaces = {
 								worknotes = "~/worknotes",
 								personal = "~/personal",
-                side_projects = "~/side_projects"
+								side_projects = "~/side_projects",
 							},
 							default_workspace = "worknotes",
 						},
@@ -181,4 +175,24 @@ require("lazy").setup({
 	},
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 	{ "LhKipp/nvim-nu", build = "TSInstall nu" },
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({
+				keymaps = {
+					accept_suggestion = "<C-f>",
+				},
+			})
+		end,
+	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		config = function()
+			require("render-markdown").setup({})
+		end,
+	}
 })

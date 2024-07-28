@@ -5,7 +5,7 @@ vim.keymap.set("n", "<leader>o", builtin.find_files, {})
 vim.keymap.set("n", "<leader>e", function()
 	builtin.buffers({ sort_lastused = true, ignore_current_buffer = true, sort_mru = true })
 end)
-vim.keymap.set("n", "<leader>je", builtin.jumplist, {})
+vim.keymap.set("n", "<leader>j", builtin.jumplist, {})
 vim.keymap.set("n", "<leader>a", builtin.lsp_document_symbols, {})
 vim.keymap.set("n", "<leader>wa", builtin.lsp_dynamic_workspace_symbols, {})
 vim.keymap.set("n", "<leader>ff", function()
@@ -21,11 +21,11 @@ require("telescope").setup({
 		mappings = {
 			n = {
 				["<c-d>"] = require("telescope.actions").delete_buffer,
-				["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+				["<c-t>"] = require("trouble.sources.telescope").open,
 			},
 			i = {
 				["<c-d>"] = require("telescope.actions").delete_buffer,
-				["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+				["<c-t>"] = require("trouble.sources.telescope").open,
 			},
 		},
 	},
