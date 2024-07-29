@@ -6,7 +6,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.black.with({
-			extra_args = { "--line-length", "80" },
+			extra_args = {"--unstable",  "--line-length", "79"},
 		}),
 
 		-- go
@@ -14,10 +14,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.gofumpt,
 
 		-- sql
-    null_ls.builtins.diagnostics.sqlfluff.with({
-      extra_args = { "--dialect", "postgres" },
-      extra_filetypes = { "pgsql" },
-    }),
+		null_ls.builtins.diagnostics.sqlfluff.with({
+			extra_args = { "--dialect", "postgres" },
+			extra_filetypes = { "pgsql" },
+		}),
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
 			extra_filetypes = { "pgsql" },
@@ -42,4 +42,3 @@ null_ls.setup({
 		null_ls.builtins.code_actions.refactoring,
 	},
 })
-

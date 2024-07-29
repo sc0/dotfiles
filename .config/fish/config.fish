@@ -5,6 +5,10 @@ if status is-interactive
   set HOMEBREW_NO_AUTO_UPDATE 1 # Prevents every `brew install` from taking forever
   set TERM xterm-256color-italic
   set BAT_THEME base16 
+  set -x XDG_CONFIG_HOME ~/.config
+
+  fish_add_path ~/go/bin
+  
 
   # Fish fzf setup
   fzf_configure_bindings --directory=\co --git_status=\cg

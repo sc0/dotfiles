@@ -10,7 +10,7 @@ require("lspconfig").html.setup({
 	filetypes = { "html", "htmldjango" },
 })
 
-vim.keymap.set("n", "<C-f>", function()
+vim.keymap.set("n", "<leader>;", function()
   local view = vim.fn.winsaveview()
 	vim.cmd("normal! gg=G")
   vim.fn.winrestview(view)
@@ -40,7 +40,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>rn", function()
 		vim.lsp.buf.rename()
 	end, opts)
-	vim.keymap.set("n", "<C-f>", function()
+	vim.keymap.set("n", "<leader>;", function()
 		vim.lsp.buf.format()
 	end, opts)
 	vim.keymap.set("i", "<C-p>", function()
@@ -65,6 +65,7 @@ lsp.setup_nvim_cmp({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
+		-- { name = "codeium" },
 	},
 	{ { name = "buffer" } },
 	capabilities = capabilities,

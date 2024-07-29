@@ -1,6 +1,6 @@
-require("no-neck-pain").setup({
-  width = 140,
-  autocmds = {
-    enableOnVimEnter = true
-  }
-})
+-- require("no-neck-pain").setup({
+--   width = 140,
+--   autocmds = {
+--     enableOnVimEnter = true
+--   }
+-- })
