@@ -1,6 +1,5 @@
 return {
   "folke/trouble.nvim",
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
   cmd = "Trouble",
   keys = {
     {
@@ -9,38 +8,50 @@ return {
       desc = "Diagnostics (Trouble)",
     },
     {
-      "<leader>tT",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-      desc = "Buffer Diagnostics (Trouble)",
-    },
-    {
-      "<leader>cs",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
+      "<leader>ts",
+      "<cmd>Trouble symbols toggle<cr>",
       desc = "Symbols (Trouble)",
     },
     {
-      "<leader>cl",
-      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
-    },
-    {
-      "<leader>tL",
-      "<cmd>Trouble loclist toggle<cr>",
-      desc = "Location List (Trouble)",
-    },
-    {
-      "<leader>tQ",
-      "<cmd>Trouble qflist toggle<cr>",
-      desc = "Quickfix List (Trouble)",
+      "<leader>tr",
+      "<cmd>Trouble lsp_references toggle<cr>",
+      desc = "References (Trouble)",
     },
   },
   config = function()
+    require("trouble").setup({
+      win = {
+        type = "split",
+        position = "right",
+        size = 0.35,
+      },
+      focus = true,
+      modes = {
+        diagnostics = {
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "bottom",
+            size = 0.35,
+          }
+        },
+        telescope = {
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "bottom",
+            size = 0.35,
+          }
+        }
+      }
+    })
+
     vim.keymap.set("n", "[t", function()
       require("trouble").next({skip_groups=true, jump = true})
     end)
 
     vim.keymap.set("n", "]t", function()
-      require("trouble").previous({skip_groups=true, jump = true})
+      require("trouble").prev({skip_groups=true, jump = true})
     end)
   end
 }

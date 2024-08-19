@@ -5,6 +5,7 @@ return {
     -- See `:help ibl`
     main = "ibl",
     opts = {
+      indent = { char = "│"},
       exclude = { filetypes = {"dashboard"}}
     },
   },

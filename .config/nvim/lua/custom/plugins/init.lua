@@ -3,21 +3,30 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-	{
-		"mbbill/undotree",
-		config = function()
-			vim.keymap.set("n", "<leader>ut", vim.cmd.UndotreeToggle)
-			vim.keymap.set("n", "<leader>uf", vim.cmd.UndotreeFocus)
-		end,
-	},
-	{ "mattn/emmet-vim" },
-	{ "lifepillar/pgsql.vim" },
-	{ "sindrets/diffview.nvim" },
-	{ "jonarrien/telescope-cmdline.nvim" },
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-	},
-	{ "fatih/vim-go" },
+  {
+    "mbbill/undotree",
+    config = function()
+      vim.keymap.set("n", "<leader>ut", vim.cmd.UndotreeToggle)
+      vim.keymap.set("n", "<leader>uf", vim.cmd.UndotreeFocus)
+    end,
+  },
+  -- { "mattn/emmet-vim" },
+  { "lifepillar/pgsql.vim" },
+  { "sindrets/diffview.nvim" },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  { "fatih/vim-go" },
+  { "LhKipp/nvim-nu", build = "TSInstall nu" },
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup({})
+      vim.keymap.set("n", "<leader>rn", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end, { expr = true, desc = "[R]e[n]ame" })
+    end,
+  },
 }

@@ -1,7 +1,7 @@
   pane_template name="statusbar"{
     pane size=1 borderless=true {
       plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-        format_left  "{mode}#[fg=#232137,bg=black] #[fg=fg,bg=black,bold]{session} #[fg=black,bg=orange]{tabs}"
+        format_left  "{mode}#[fg=#232137,bg=red] #[fg=fg,bg=black,bold]{session} #[fg=black,bg=orange]{tabs}"
         format_right "#[fg=#232137,bg=#34304B]{datetime}"
         format_space "#[bg=#232137]"
 

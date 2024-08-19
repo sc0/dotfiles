@@ -2,8 +2,9 @@
 -- See `:help mapleader`
 --
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
+vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 2
 
 vim.opt.expandtab = true
@@ -48,8 +49,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
--- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -224,8 +224,12 @@ require("lazy").setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+      "jonarrien/telescope-cmdline.nvim",
     },
     config = function()
+      local actions = require("telescope.actions")
+      local open_with_trouble = require("trouble.sources.telescope").open
+
       -- Two important keymaps to use while in Telescope are:
       --  - Insert mode: <c-/>
       --  - Normal mode: ?
@@ -242,9 +246,34 @@ require("lazy").setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          mappings = {
+            n = {
+              ["<c-d>"] = actions.delete_buffer,
+              ["<c-t>"] = open_with_trouble,
+            },
+            i = {
+              ["<c-d>"] = actions.delete_buffer,
+              ["<c-t>"] = open_with_trouble,
+            },
+          },
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
+          },
+          cmdline = {
+            picker = {
+              layout_config = {
+                width = 120,
+                height = 25,
+              },
+            },
+            mappings = {
+              complete = "<Tab>",
+              run_selection = "<C-CR>",
+              run_input = "<CR>",
+            },
           },
         },
       })
@@ -252,6 +281,8 @@ require("lazy").setup({
       -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
+      pcall(require("telescope").load_extension, "noice")
+      pcall(require("telescope").load_extension, "cmdline")
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
@@ -315,11 +346,14 @@ require("lazy").setup({
         builtin.oldfiles,
         { desc = '[S]earch Recent Files ("." for repeat)' }
       )
+      vim.keymap.set("n", "<leader>e", function()
+        builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
+      end, { desc = "[ ] Find existing buffers" })
       vim.keymap.set(
         "n",
-        "<leader>e",
-        builtin.buffers,
-        { desc = "[ ] Find existing buffers" }
+        "<leader>fp",
+        ":Telescope cmdline<cr>",
+        { desc = "Cmdline history" }
       )
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -357,9 +391,9 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim", opts = {} },
+      -- -- -- Useful status updates for LSP.
+      -- -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      -- { "j-hui/fidget.nvim", opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
@@ -436,10 +470,6 @@ require("lazy").setup({
             "[W]orkspace [S]ymbols"
           )
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
@@ -514,7 +544,6 @@ require("lazy").setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         --
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -566,6 +595,8 @@ require("lazy").setup({
           end,
         },
       })
+
+      require("lspconfig").nushell.setup({})
     end,
   },
 
@@ -576,7 +607,11 @@ require("lazy").setup({
       {
         "<leader>;",
         function()
+          -- if require("conform").list_formatters_to_run(0)[1] == nil then
+          --   vim.api.nvim_feedkeys("mzgg=G`z", "n", false)
+          -- else
           require("conform").format({ async = true, lsp_fallback = true })
+          -- end
         end,
         mode = "",
         desc = "[F]ormat buffer",
@@ -601,11 +636,19 @@ require("lazy").setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { "prettierd", "prettier" },
+        svelte = { "prettierd", "prettier" },
       },
       formatters = {
         stylua = {
-          prepend_args = { "--indent-type", "Spaces", "--column-width", "80" },
+          prepend_args = {
+            "--indent-type",
+            "Spaces",
+            "--column-width",
+            "80",
+            "--indent-width",
+            "2",
+          },
         },
       },
     },
@@ -671,9 +714,9 @@ require("lazy").setup({
           -- Select the [p]revious item
           ["<C-p>"] = cmp.mapping.select_prev_item(),
 
-          -- -- Scroll the documentation window [b]ack / [f]orward
-          -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          -- Scroll the documentation window [b]ack / [f]orward
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-d>"] = cmp.mapping.scroll_docs(4),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
@@ -732,21 +775,6 @@ require("lazy").setup({
       require("mini.surround").setup()
       require("mini.icons").setup()
 
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require("mini.statusline")
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup({ use_icons = vim.g.have_nerd_font })
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return "%2l:%-2v"
-      end
-
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
@@ -803,7 +831,7 @@ require("lazy").setup({
         max_lines = 3,
       })
       vim.api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
-    end
+    end,
   },
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
