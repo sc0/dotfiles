@@ -141,6 +141,9 @@ function OpenDiagnosticIfNoFloat()
     end
   end
 
+
+  -- Sieman-eczko
+
   -- THIS IS FOR BUILTIN LSP
   vim.diagnostic.open_float({
     scope = "cursor",
@@ -872,3 +875,5 @@ require("lazy").setup({
 })
 
 require("custom.keymap")
+
+vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#272e33", bg = "#a7c080" })

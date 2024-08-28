@@ -50,22 +50,45 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Q", "<nop>")
 
 -- replace selected word with typed text
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI|''<Left><Left><Left><Left><Left><Left>]])
-vim.keymap.set("v", "<leader>s", [[y:%s/<C-r>"/<C-r>"/gI|''<Left><Left><Left><Left><Left><Left>]])
-vim.keymap.set("n", "<leader><S-s>", [[:%s/\<<C-r><C-w>\>//gI|''<Left><Left><Left><Left><Left><Left>]])
-vim.keymap.set("v", "<leader><S-s>", [[y:%s/<C-r>"//gI|''<Left><Left><Left><Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set(
-	"n",
-	"<leader>vt",
-	"<cmd>lua vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })<CR>"
+  "n",
+  "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI|''<Left><Left><Left><Left><Left><Left>]]
 )
 vim.keymap.set(
-	"n",
-	"<leader>i",
-	"ea<cmd>lua (function() require'cmp'.complete(); require'cmp'.select_next_item(); end)()<CR>"
+  "v",
+  "<leader>s",
+  [[y:%s/<C-r>"/<C-r>"/gI|''<Left><Left><Left><Left><Left><Left>]]
+)
+vim.keymap.set(
+  "n",
+  "<leader><S-s>",
+  [[:%s/\<<C-r><C-w>\>//gI|''<Left><Left><Left><Left><Left><Left>]]
+)
+vim.keymap.set(
+  "v",
+  "<leader><S-s>",
+  [[y:%s/<C-r>"//gI|''<Left><Left><Left><Left><Left><Left>]]
+)
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set(
+  "n",
+  "<leader>vt",
+  "<cmd>lua vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })<CR>"
+)
+vim.keymap.set(
+  "n",
+  "<leader>i",
+  "ea<cmd>lua (function() require'cmp'.complete(); require'cmp'.select_next_item(); end)()<CR>"
 )
 vim.keymap.set("n", "<leader>n", "<cmd>nohl<cr>")
 
 vim.keymap.set("n", "<C-i>", "<C-a>")
 
+vim.keymap.set("n", "<leader>:", [[magg=G`azz]])
+
+vim.keymap.set("n", "<leader>rn", function()
+  vim.ui.input({ prompt = "Rename to: " }, function(input)
+    vim.lsp.buf.rename(input)
+  end)
+end)

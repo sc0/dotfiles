@@ -20,13 +20,14 @@ return {
   },
   { "fatih/vim-go" },
   { "LhKipp/nvim-nu", build = "TSInstall nu" },
-  {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup({})
-      vim.keymap.set("n", "<leader>rn", function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-      end, { expr = true, desc = "[R]e[n]ame" })
-    end,
-  },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   config = function()
+  --     require("inc_rename").setup({})
+  --     vim.keymap.set("n", "<leader>rn", function()
+  --       return ":IncRename " .. vim.fn.expand("<cword>")
+  --     end, { expr = true, desc = "[R]e[n]ame" })
+  --   end,
+  -- },
+  {"ziglang/zig.vim"}
 }
