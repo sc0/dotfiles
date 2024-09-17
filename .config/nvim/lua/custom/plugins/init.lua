@@ -10,7 +10,24 @@ return {
       vim.keymap.set("n", "<leader>uf", vim.cmd.UndotreeFocus)
     end,
   },
-  -- { "mattn/emmet-vim" },
+  {
+    "mattn/emmet-vim",
+    ft = {
+      "html",
+      "css",
+      "scss",
+      "sass",
+      "less",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "xml",
+      "xhtml",
+      "pug",
+      "jade",
+    },
+  },
   { "lifepillar/pgsql.vim" },
   { "sindrets/diffview.nvim" },
   {
@@ -29,5 +46,5 @@ return {
   --     end, { expr = true, desc = "[R]e[n]ame" })
   --   end,
   -- },
-  {"ziglang/zig.vim"}
+  { "ziglang/zig.vim" },
 }

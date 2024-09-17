@@ -120,7 +120,7 @@ return {
     ins_left({
       -- mode component
       function()
-        return ""
+        return ""
       end,
       color = color_fn,
       padding = { right = 1 },

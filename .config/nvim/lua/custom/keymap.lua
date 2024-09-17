@@ -92,3 +92,6 @@ vim.keymap.set("n", "<leader>rn", function()
     vim.lsp.buf.rename(input)
   end)
 end)
+
+
+vim.keymap.set("n", "<leader>lr", [[:LspRestart<CR>]])

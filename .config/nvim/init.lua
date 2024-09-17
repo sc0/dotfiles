@@ -141,9 +141,6 @@ function OpenDiagnosticIfNoFloat()
     end
   end
 
-
-  -- Sieman-eczko
-
   -- THIS IS FOR BUILTIN LSP
   vim.diagnostic.open_float({
     scope = "cursor",
@@ -561,6 +558,114 @@ require("lazy").setup({
             },
           },
         },
+        tailwindcss = {
+          filetypes = {
+            "aspnetcorerazor",
+            "astro",
+            "astro-markdown",
+            "blade",
+            "clojure",
+            "django-html",
+            "htmldjango",
+            "edge",
+            "eelixir",
+            "elixir",
+            "ejs",
+            "erb",
+            "eruby",
+            "gohtml",
+            "gohtmltmpl",
+            "haml",
+            "handlebars",
+            "hbs",
+            "html",
+            "htmlangular",
+            "html-eex",
+            "heex",
+            "jade",
+            "leaf",
+            "liquid",
+            -- "markdown",
+            -- "mdx",
+            "mustache",
+            "njk",
+            "nunjucks",
+            "php",
+            "razor",
+            "slim",
+            "twig",
+            "css",
+            "less",
+            "postcss",
+            "sass",
+            "scss",
+            "stylus",
+            "sugarss",
+            "javascript",
+            "javascriptreact",
+            "reason",
+            "rescript",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+            "templ",
+          },
+        },
+        htmx = {
+          filetypes = {
+            "aspnetcorerazor",
+            "astro",
+            "astro-markdown",
+            "blade",
+            "clojure",
+            "django-html",
+            "htmldjango",
+            "edge",
+            "eelixir",
+            "elixir",
+            "ejs",
+            "erb",
+            "eruby",
+            "gohtml",
+            "gohtmltmpl",
+            "haml",
+            "handlebars",
+            "hbs",
+            "html",
+            "htmlangular",
+            "html-eex",
+            "heex",
+            "jade",
+            "leaf",
+            "liquid",
+            -- "markdown",
+            -- "mdx",
+            "mustache",
+            "njk",
+            "nunjucks",
+            "php",
+            "razor",
+            "slim",
+            "twig",
+            "javascript",
+            "javascriptreact",
+            "reason",
+            "rescript",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+            "templ",
+          },
+        },
+        html = {
+          filetypes = {
+            "html",
+            "templ",
+            "htmldjango",
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -601,60 +706,6 @@ require("lazy").setup({
 
       require("lspconfig").nushell.setup({})
     end,
-  },
-
-  { -- Autoformat
-    "stevearc/conform.nvim",
-    lazy = false,
-    keys = {
-      {
-        "<leader>;",
-        function()
-          -- if require("conform").list_formatters_to_run(0)[1] == nil then
-          --   vim.api.nvim_feedkeys("mzgg=G`z", "n", false)
-          -- else
-          require("conform").format({ async = true, lsp_fallback = true })
-          -- end
-        end,
-        mode = "",
-        desc = "[F]ormat buffer",
-      },
-    },
-    opts = {
-      notify_on_error = false,
-      format_on_save = false, -- function(bufnr)
-      -- -- Disable "format_on_save lsp_fallback" for languages that don't
-      -- -- have a well standardized coding style. You can add additional
-      -- -- languages here or re-enable it for the disabled ones.
-      -- local disable_filetypes = { c = true, cpp = true }
-      -- return {
-      -- 	timeout_ms = 500,
-      -- 	lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-      -- }
-      -- end,
-      formatters_by_ft = {
-        lua = { "stylua" },
-        -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { "prettierd", "prettier" },
-        svelte = { "prettierd", "prettier" },
-      },
-      formatters = {
-        stylua = {
-          prepend_args = {
-            "--indent-type",
-            "Spaces",
-            "--column-width",
-            "80",
-            "--indent-width",
-            "2",
-          },
-        },
-      },
-    },
   },
 
   { -- Autocompletion
@@ -749,14 +800,6 @@ require("lazy").setup({
         },
       })
     end,
-  },
-
-  -- Highlight todo, notes, etc in comments
-  {
-    "folke/todo-comments.nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { signs = false },
   },
 
   { -- Collection of various small independent plugins/modules
@@ -877,3 +920,16 @@ require("lazy").setup({
 require("custom.keymap")
 
 vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#272e33", bg = "#a7c080" })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  desc = "Enable todo-comments for text",
+  group = vim.api.nvim_create_augroup("user.todo.text", { clear = true }),
+  callback = function(ev)
+    local config = require("todo-comments.config")
+    local comments_only = string.match(ev.file, "%.md$") == nil
+      and string.match(ev.file, "%.txt$") == nil
+      and string.match(ev.file, "%.adoc$") == nil
+      and string.match(ev.file, "%.asciidoc$") == nil
+    config._options.highlight.comments_only = comments_only
+  end,
+})

@@ -24,7 +24,7 @@ return {
       end, { desc = "Toggle tests summary" })
       vim.keymap.set("n", "<leader>no", function ()
         require("neotest").output_panel.toggle()
-      end, { desc = "Toggle tests output panel" })
+      end, { desc = "Toggle tests output" })
     end,
   },
 }

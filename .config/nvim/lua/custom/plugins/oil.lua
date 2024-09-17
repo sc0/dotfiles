@@ -2,6 +2,9 @@ return {
 	"stevearc/oil.nvim",
 	config = function()
 		require("oil").setup({
+			keymaps = {
+				["<BS>"] = "actions.parent",
+		},
 			float = {
 				border = "rounded",
 				relative = "editor",
@@ -17,6 +20,6 @@ return {
 			dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		})
 
-		vim.keymap.set("n", "-", require("oil").open_float, { desc = "[oil] Open parent directory" })
+		vim.keymap.set("n", "<BS>", require("oil").open_float, { desc = "[oil] Open parent directory" })
 	end,
 }
