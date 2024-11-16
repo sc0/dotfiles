@@ -95,3 +95,8 @@ end)
 
 
 vim.keymap.set("n", "<leader>lr", [[:LspRestart<CR>]])
+
+vim.keymap.set("n", "<leader>dfo", [[:DiffviewOpen<CR>]])
+vim.keymap.set("n", "<leader>dfc", [[:DiffviewClose<CR>]])
+vim.keymap.set("n", "<leader>dfh", [[:DiffviewFileHistory<CR>]])
+vim.keymap.set("v", "<leader>dfh", [[:DiffviewFileHistory<CR>]])

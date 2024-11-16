@@ -21,6 +21,9 @@ return {
             command = { "python", "-m", "IPython" }, -- or { "ipython", "--no-autoindent" }
             format = require("iron.fts.common").bracketed_paste,
           },
+          ocaml = {
+            command = { "ocaml" },
+          },
         },
         -- How the repl window will be displayed
         -- See below for more information

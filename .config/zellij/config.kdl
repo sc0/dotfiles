@@ -422,3 +422,5 @@ theme "kanagawa"
 // Default: true
 //
 // styled_underlines false
+
+hide_frame_for_single_pane false

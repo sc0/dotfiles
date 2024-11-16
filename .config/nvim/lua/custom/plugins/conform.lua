@@ -32,8 +32,8 @@ return { -- Autoformat
       -- is found.
       javascript = { "prettierd", "prettier" },
       svelte = { "prettierd", "prettier" },
-      html = { "prettierd", "prettier" },
-      htmldjango = { "prettierd", "prettier" },
+      html = { "prettier" },
+      htmldjango = { "prettier" },
       markdown = { "prettier" },
     },
     formatters = {

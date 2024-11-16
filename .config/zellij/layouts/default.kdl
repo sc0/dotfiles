@@ -7,7 +7,7 @@ layout {
         format_right "#[fg=#232137,bg=green]{datetime}"
         format_space "#[bg=bg]"
 
-        hide_frame_for_single_pane "true"
+        hide_frame_for_single_pane "false"
 
         mode_normal        "#[fg=fg,bg=#262633,bold] {name} #[fg=#262633,bg=orange]"
         mode_locked        "#[fg=fg,bg=#232138,bold] {name} #[fg=#232137,bg=orange]"

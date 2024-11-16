@@ -26,6 +26,7 @@ return {
       "xhtml",
       "pug",
       "jade",
+      "htmldjango",
     },
   },
   { "lifepillar/pgsql.vim" },
@@ -46,5 +47,5 @@ return {
   --     end, { expr = true, desc = "[R]e[n]ame" })
   --   end,
   -- },
-  { "ziglang/zig.vim" },
+  { "ziglang/zig.vim" }
 }

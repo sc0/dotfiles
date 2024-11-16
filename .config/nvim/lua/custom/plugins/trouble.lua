@@ -17,6 +17,11 @@ return {
       "<cmd>Trouble lsp_references toggle<cr>",
       desc = "References (Trouble)",
     },
+    {
+      "<leader>tq",
+      "<cmd>Trouble quickfix toggle<cr>",
+      desc = "Quickfix list (Trouble)",
+    },
   },
   config = function()
     require("trouble").setup({
@@ -28,6 +33,14 @@ return {
       focus = true,
       modes = {
         diagnostics = {
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "bottom",
+            size = 0.35,
+          }
+        },
+        quickfix = {
           preview = {
             type = "split",
             relative = "win",

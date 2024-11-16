@@ -346,9 +346,9 @@ require("lazy").setup({
         builtin.oldfiles,
         { desc = '[S]earch Recent Files ("." for repeat)' }
       )
-      vim.keymap.set("n", "<leader>e", function()
-        builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
-      end, { desc = "[ ] Find existing buffers" })
+      -- vim.keymap.set("n", "<leader>e", function()
+      --   builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
+      -- end, { desc = "[ ] Find existing buffers" })
       vim.keymap.set(
         "n",
         "<leader>fp",
@@ -542,7 +542,7 @@ require("lazy").setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        ts_ls = {},
         --
         lua_ls = {
           -- cmd = {...},
